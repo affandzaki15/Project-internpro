@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Page</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="loggg">
+  <div class="login-container">
+    <div class="login-card">
+      <h2>Welcome Back!</h2>
+      <p>Please login to your account</p>
+
+      <!-- Toggle for Candidate or Employer -->
+      <div class="toggle-buttons">
+        <button id="candidate-btn" onclick="switchToCandidate()">Candidate</button>
+        <button id="employer-btn" onclick="switchToEmployer()">Employer</button>
+      </div>
+
+      <!-- Login Form -->
+      <form id="login-form" onsubmit="handleLogin(event)">
+        <div id="user-type-message">Login as Candidate</div>
+        <input type="text" placeholder="Username" required id="username">
+        <input type="password" placeholder="Password" required id="password">
+        <button type="submit" class="login-btn">Login</button>
+        <p class="forgot-password"><a href="#">Forgot Password?</a></p>
+      </form>
+
+    <div>
+        "candidate": { username: "candidate123", password: "candypassword" },
+        "employer": { username: "employer123", password: "employerpassword" }
+    </div>
+
+      <div class="register-link">
+        <p>Back to home? <a href="index.html">home</a></p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let currentUserType = "Candidate"; // Default user type is Candidate
+
+    // Random credentials for Candidate and Employer
+    const credentials = {
+      "candidate": { username: "candidate123", password: "candypassword" },
+      "employer": { username: "employer123", password: "employerpassword" }
+    };
+
+    // Switch to Candidate login form
+    function switchToCandidate() {
+      document.getElementById("user-type-message").innerText = "Login as Candidate";
+      currentUserType = "Candidate"; // Change user type to Candidate
+    }
+
+    // Switch to Employer login form
+    function switchToEmployer() {
+      document.getElementById("user-type-message").innerText = "Login as Employer";
+      currentUserType = "Employer"; // Change user type to Employer
+    }
+
+    // Handle login form submission
+    function handleLogin(event) {
+      event.preventDefault(); // Prevent default form submission
+
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+
+      // Validate login based on user type (Candidate or Employer)
+      if (currentUserType === "Candidate") {
+        if (username === credentials.candidate.username && password === credentials.candidate.password) {
+          // Redirect to Candidate dashboard
+          window.location.href = "jobs.html";
+        } else {
+          alert("Invalid Candidate credentials, please try again.");
+        }
+      } else if (currentUserType === "Employer") {
+        if (username === credentials.employer.username && password === credentials.employer.password) {
+          // Redirect to Employer dashboard
+          window.location.href = "jobopen.html";
+        } else {
+          alert("Invalid Employer credentials, please try again.");
+        }
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Employee Details</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="triple">
+  <div class="employee-container">
+    <div class="employee-card">
+      <h2>Candidate Detail</h2>
+
+      <div class="detail">
+        <p><strong>Full Name:</strong> <span id="full-name-detail"></span></p>
+        <p><strong>Email:</strong> <span id="email-detail"></span></p>
+        <p><strong>Phone:</strong> <span id="phone-detail"></span></p>
+        <p><strong>Message:</strong> <span id="message-detail"></span></p>
+      </div>
+
+      <div class="actions">
+        <button onclick="proceedToPayment()">Proceed to Payment</button>
+      </div>
+      <a href="index.html">
+        <button style="margin-top: 20px; padding: 10px 10px; font-size: 16px; background-color: #be0101; color: white; border: none; cursor: pointer;">
+            Back to Home
+        </button>
+      </a>
+    </div>
+  </div>
+
+  <script>
+    // Function to populate the candidate details from localStorage
+    window.onload = function() {
+      document.getElementById('full-name-detail').textContent = localStorage.getItem('fullName');
+      document.getElementById('email-detail').textContent = localStorage.getItem('email');
+      document.getElementById('phone-detail').textContent = localStorage.getItem('phone');
+      document.getElementById('message-detail').textContent = localStorage.getItem('message');
+    }
+
+    // Function to proceed to payment page
+    function proceedToPayment() {
+      // Redirect to Payment Gateway page
+      window.location.href = "payment.html";
+    }
+  </script>
+</body>
+</html>

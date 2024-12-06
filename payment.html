@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Payment Gateway</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="triple">
+  <div class="payment-container">
+    <div class="payment-card">
+      <h2>Payment Gateway</h2>
+      <h3>Candidate Details</h3>
+      <div class="candidate-info">
+        <p><strong>Full Name:</strong> <span id="full-name-detail"></span></p>
+        <p><strong>Email:</strong> <span id="email-detail"></span></p>
+        <p><strong>Phone:</strong> <span id="phone-detail"></span></p>
+        <p><strong>Message:</strong> <span id="message-detail"></span></p>
+      </div>
+
+      <h3>Proceed with Payment</h3>
+      <form id="payment-form">
+        <label for="credit-card">Credit Card Number:</label>
+        <input type="text" id="credit-card" placeholder="Enter your credit card number" required>
+
+        <label for="expiry-date">Expiry Date:</label>
+        <input type="month" id="expiry-date" required>
+
+        <label for="cvv">CVV:</label>
+        <input type="text" id="cvv" placeholder="Enter CVV" required>
+
+        <button type="submit" class="payment-btn">Pay Now</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    // Function to populate the candidate details from localStorage
+    window.onload = function() {
+      document.getElementById('full-name-detail').textContent = localStorage.getItem('fullName');
+      document.getElementById('email-detail').textContent = localStorage.getItem('email');
+      document.getElementById('phone-detail').textContent = localStorage.getItem('phone');
+      document.getElementById('message-detail').textContent = localStorage.getItem('message');
+    }
+
+    // Handle payment submission (this is just a placeholder)
+    document.getElementById('payment-form').onsubmit = function(event) {
+      event.preventDefault(); // Prevent form submission
+      
+      // Here, you can implement the logic to process payment via API
+
+      alert("Payment successful! You have been registered.");
+      // Optionally, redirect to a success page or confirmation page
+      window.location.href = "index.html";
+    };
+  </script>
+</body>
+</html>
